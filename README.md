@@ -52,11 +52,9 @@ pip install -r requirements_datacreation.txt
 Download the required model weights and place them in the `checkpoints/` directory.
 
 ```bash
-# Create checkpoints directory if it doesn't exist
+# Download your model weights here
 https://drive.google.com/drive/folders/1Hpdf9hEF9HyCnY-BtcjsOypIOq6caZ-L?usp=drive_link
 
-# Download your model weights here
-# Example: wget <your_checkpoint_url> -O checkpoints/model.ckpt
 ```
 
 **Step 3: Install Grounded-SAM**
