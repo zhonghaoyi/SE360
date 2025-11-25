@@ -68,7 +68,15 @@ python -m pip install -e segment_anything
 pip install --no-build-isolation -e GroundingDINO
 ```
 
-**Step 4: Install Flash Attention 2**
+**Step 4: Install SAM2**
+
+```bash
+cd SE360_Base/Grounded_SAM_2
+pip install -e .
+cd ../..  # Return to project root
+```
+
+**Step 5: Install Flash Attention 2**
 
 Download the appropriate wheel file based on your Python, PyTorch, and CUDA versions from the [Flash Attention releases page](https://github.com/Dao-AILab/flash-attention/releases/tag/v2.7.4.post1).
 
@@ -80,6 +88,7 @@ pip install flash_attn-2.7.4.post1+cu12torch2.5cxx11abiFALSE-cp312-cp312-linux_x
 ```
 
 > **Note:** Make sure to select the correct wheel file that matches your specific Python version (cp3XX), PyTorch version, and CUDA version.
+
 
 #### Option B: Image Editing Environment 
 
@@ -125,9 +134,60 @@ data/
 
 ## 🚀 Usage
 
+### Part 1: Data Creation Pipeline
+
+This section covers the creation of SE360_Base and SE360_HF datasets. Run the scripts in the numbered order as indicated by their filenames.
+
+#### SE360_Base Dataset Creation
+
+Navigate to the `SE360_Base/` directory and run the scripts in order:
+
+```bash
+cd SE360_Base
+
+# Step 1: Generate 360° descriptions
+python generate_all_360descriptions_1.py
+
+# Step 2: Clean forbidden data
+python clean_forbiden_2.py
+
+# Step 3: Additional processing steps
+python grounding_dino_all_coarse_bbox_3.py
+python Qwenvl_obj_pers_bbox_coarse_crop_3.py
+python florence2_all_crop_3.py
+
+# Step 4: Match models
+python 3model_all_match_4.py
+
+# Continue with remaining steps...
+# (Follow the numbering in the filenames)
+```
+
+#### SE360_HF Dataset Creation
+
+Navigate to the `SE360_HF/` directory and run the scripts in order:
+
+```bash
+cd SE360_HF
+
+# Step 1: Find items
+python find_item_1.py
+
+# Step 2: ERP to perspective
+python ERP2pers_2.py
+
+# Step 3: Flux batch processing
+python flux_batch_3.py
+
+# Continue with remaining steps...
+# (Follow the numbering in the filenames)
+```
+
+### Part 2: Image Editing Model
+
 This project uses `LightningCLI` for configuration and execution. You can run training and evaluation using `main.py`.
 
-### Training
+#### Training
 
 To start training the SE360 model:
 
@@ -138,7 +198,7 @@ python main.py fit \
 ```
 
 
-### Inference / Testing
+#### Inference / Testing
 
 1. To run inference using a trained checkpoint:
 
@@ -161,6 +221,7 @@ python main.py test \
 
 ```
 *   `--result_dir`: Directory where results will be saved.
+
 
 
 
