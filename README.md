@@ -143,8 +143,20 @@ data/
 ├── Matterport3D/
 │   ├── mp3d_skybox/           # Original skybox images
 │   ├── SE360_HF/              
-│   └── SE360_Base/            
-            
+│   ├── SE360_Base/            
+│   └── test_final_without_artifacts/  # Test dataset
+```
+
+### Download Test Dataset
+
+Download the test dataset from [testset](https://drive.google.com/file/d/1rBdDS1A8UCWGV0eKWhcOZ0RlM1J6DmfZ/view?usp=drive_link) and extract it to `data/Matterport3D/`:
+
+```bash
+# Navigate to the Matterport3D directory
+cd data/Matterport3D
+
+# Extract the downloaded test dataset
+# The directory structure should be: data/Matterport3D/test_final_without_artifacts
 ```
 
 
