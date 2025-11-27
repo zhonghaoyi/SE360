@@ -244,12 +244,12 @@ python main.py test \
 
 This project builds upon and integrates several excellent open-source projects:
 
-- [PanFusion](https://github.com/chengzhag/PanFusion.git) - Panoramic image fusion framework
-- [MVDiffusion](https://github.com/Tangshitao/MVDiffusion.git) - Multi-view diffusion model
-- [SAM2](https://github.com/facebookresearch/sam2.git) - Segment Anything Model 2
-- [Grounded-Segment-Anything](https://github.com/IDEA-Research/Grounded-Segment-Anything.git) - Grounding DINO and SAM integration
-- [LaMa](https://github.com/advimman/lama.git) - Large Mask Inpainting
-- [OmniGen](https://github.com/VectorSpaceLab/OmniGen.git) - Omni-generative model
+- [PanFusion](https://github.com/chengzhag/PanFusion.git) 
+- [MVDiffusion](https://github.com/Tangshitao/MVDiffusion.git) 
+- [SAM2](https://github.com/facebookresearch/sam2.git) 
+- [Grounded-Segment-Anything](https://github.com/IDEA-Research/Grounded-Segment-Anything.git) 
+- [LaMa](https://github.com/advimman/lama.git) 
+- [OmniGen](https://github.com/VectorSpaceLab/OmniGen.git) 
 
 We thank the authors for their valuable contributions to the community.
 
