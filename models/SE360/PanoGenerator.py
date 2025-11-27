@@ -77,9 +77,9 @@ class PanoGenerator(PanoBase):
             image_guidance_scale: float = 1.6,
             model_id: Optional[str] = 'Shitao/OmniGen-v1-diffusers',
             inference_timesteps: int = 50,  # Number of timesteps during inference
-            image_use_prob: float = 0.99, 
+            image_use_prob: float = 0.99, # 0.01 for unconditioned input
             ref_use_prob: float = 0, # Reference image usage probability
-            edit_mask_use_prob: float = 0.2,
+            edit_mask_use_prob: float = 0.2, # Edit mask usage probability
             latent_pad: int = 8,
             pano_lora: bool = True,
             train_pano_lora: bool = True,

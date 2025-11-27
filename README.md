@@ -203,18 +203,38 @@ python flux_batch_3.py
 
 This project uses `LightningCLI` for configuration and execution. You can run training and evaluation using `main.py`.
 
+#### Configuration
+
+For advanced users who want to customize the model:
+
+- **Dataset Parameters**: Modify dataset settings in [`dataset/PanoDataset.py`](dataset/PanoDataset.py)
+- **Model Strategy**: Configure model training strategies in [`models/SE360/PanoGenerator.py`](models/SE360/PanoGenerator.py)
+
 #### Training
 
-To start training the SE360 model:
+
+1. To start training the SE360 model in Base Phase:
 
 ```bash
 python main.py fit \
     --model=SE360 \
     --data=SE360_Base \
 ```
+2. To start training the SE360 model in HF Phase:
 
+```bash
+python main.py fit \
+    --model=SE360 \
+    --data=SE360_HF \
+    --ckpt=SE360_Base.ckpt \
+```
 
 #### Inference / Testing
+
+**Configuration Parameters:**
+
+- **`test_function`**: Controls the testing functionality. Set this parameter in `dataset/PanoDataset.py` (line 647) to specify the test operation (e.g., `'add'` for object addition, `'remove'` for object removal).
+- **`use_ref`**: Enable reference image-based editing. Set to `True` in `dataset/PanoDataset.py` (line 649) to use reference images during training or inference.
 
 1. To run inference using a trained checkpoint:
 
@@ -238,6 +258,7 @@ python main.py test \
 ```
 
 *   `--result_dir`: Directory where results will be saved.
+
 
 ## 🙏 Acknowledgement
 

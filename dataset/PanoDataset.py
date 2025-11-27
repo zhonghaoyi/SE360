@@ -626,9 +626,9 @@ class PanoDataModule(L.LightningDataModule):
             data_dir: str = None,
             fov: int = 95,
             cam_sampler: str = 'icosahedron',  # 'horizon', 'icosahedron'
-            refs_resolution: int = 256,
+            refs_resolution: int = 256, # the size of reference image
             pers_resolution: int = 256,
-            pano_height: int = 512,
+            pano_height: int = 512, 
             # uncond_ratio: float = 0.2,
             conditioning_dropout_prob: float = 0.01,
             simple_prompt_ratio: float = 0.3,
@@ -644,7 +644,7 @@ class PanoDataModule(L.LightningDataModule):
             only_pano: bool = True,
             use_fixed_pers_prompt: bool = False,
             use_cubemap_prompt: bool = False,
-            test_function: str = 'add',
+            test_function: str = 'add', #remove
             
             use_ref: bool = False,
             refs_augmentation: bool = True,      # whether to enable refs data augmentation

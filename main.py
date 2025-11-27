@@ -25,7 +25,7 @@ def cli_main():
     os.makedirs(exp_dir, exist_ok=True)
     wandb_logger = lazy_instance(
         WandbLogger,
-        project='demo',
+        project='SE360',
         id=wandb_id,
         save_dir=exp_dir
         )
@@ -34,8 +34,8 @@ def cli_main():
     checkpoint_callback = ModelCheckpoint(
         dirpath=ckpt_dir,
         save_last=True,
-        every_n_train_steps=1000, 
-        # train_time_interval=timedelta(minutes=10),  
+        # every_n_train_steps=1000, 
+        train_time_interval=timedelta(minutes=10),  
         )
     lr_monitor = LearningRateMonitor(logging_interval='epoch')
 
@@ -77,7 +77,7 @@ def cli_main():
         parser_kwargs={'parser_mode': 'omegaconf', 'default_env': True},
         seed_everything_default=os.environ.get("LOCAL_RANK", 0),
         trainer_defaults={
-            'strategy': 'ddp', #'fsdp'
+            'strategy': 'ddp',
             'devices': [0],
             'log_every_n_steps': 10,
             'num_sanity_val_steps': 0,
@@ -87,7 +87,7 @@ def cli_main():
             # 'max_epochs': 5,   # Comment out epoch-based settings
             'accumulate_grad_batches': 1,  # Gradient accumulation: accumulate gradients every 1 batch before updating parameters
             'precision': 'bf16-mixed',
-            'callbacks': [lr_monitor,checkpoint_callback],#
+            'callbacks': [lr_monitor, checkpoint_callback],#
             'logger': wandb_logger,
             # 'gradient_clip_val': 1.0,  # New: set gradient clipping value
             # 'gradient_clip_algorithm': 'norm'  # New: set gradient clipping algorithm
@@ -96,3 +96,4 @@ def cli_main():
 
 if __name__ == '__main__':
     cli_main()
+
